@@ -1,0 +1,13 @@
+{
+  "name": "reading_app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Julian Ronayi <yuliy.ronayi@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
