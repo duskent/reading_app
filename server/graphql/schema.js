@@ -1,6 +1,8 @@
 const {GraphQLObjectType, GraphQLSchema} = require('graphql')
 const getCategories = require('./categories/getCategories')
 const createCategory = require('./categories/createCategory')
+const deleteCategory = require('./categories/deleteCategory')
+const _ = require('lodash')
 
 const Query = new GraphQLObjectType({
   name: 'RootQuery',
@@ -9,7 +11,7 @@ const Query = new GraphQLObjectType({
 
 const Mutation = new GraphQLObjectType({
   name: 'RootMutation',
-  fields: createCategory
+  fields: _.merge(createCategory, deleteCategory)
 })
 
 const Schema = new GraphQLSchema({
