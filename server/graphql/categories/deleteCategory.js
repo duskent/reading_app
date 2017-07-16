@@ -1,15 +1,13 @@
-const CategoryType = require('../types/CategoryType')
 const Category = require('../../db/models/Category')
-const {GraphQLString, GraphQLObjectType} = require('graphql')
+// Types
+const CategoryType = require('../types/CategoryType')
+const Message = require('../types/Message')
+// GraphQL
+const {GraphQLString} = require('graphql')
 
 const deleteCategory = {
   deleteCategory: {
-    type: new GraphQLObjectType({
-      name: 'Message',
-      fields: {
-        message: { type: GraphQLString }
-      }
-    }),
+    type: Message,
     description: 'Deletes category form database by Id',
     args: {
       id: {type: GraphQLString, description: 'Id of category to delete'}
