@@ -11,6 +11,7 @@ const {
 const updateCategory = {
   updateCategory: {
     type: CategoryType,
+    description: 'Updates category in the db',
     args: {
       id: {
         type: new GraphQLNonNull(GraphQLString),
@@ -18,7 +19,6 @@ const updateCategory = {
       },
       category: {type: CategoryInputType, description: 'Input category'}
     },
-    description: 'Updates category in the db',
     resolve: (source, args) => {
       return new Promise((resolve, reject) => {
         const {id, category} = args

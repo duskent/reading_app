@@ -8,10 +8,10 @@ const {GraphQLString} = require('graphql')
 const createCategory = {
   createCategory: {
     type: CategoryType,
+    description: 'Creates new category in the database',
     args: {
       category: {type: CategoryInputType, description: 'Input category'}
     },
-    description: 'Creates new category in the database',
     resolve: (source, args) => {
       return new Promise((resolve, reject) => {
         const {category} = args

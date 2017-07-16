@@ -1,6 +1,8 @@
-const BookType = require('../types/BookType')
-const {GraphQLList} = require('graphql')
 const Book = require('../../db/models/Book')
+// Types
+const BookType = require('../types/BookType')
+// GraphQL
+const {GraphQLList} = require('graphql')
 
 const getBooks = {
   getBooks: {

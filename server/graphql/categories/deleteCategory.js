@@ -10,10 +10,10 @@ const deleteCategory = {
         message: { type: GraphQLString }
       }
     }),
+    description: 'Deletes category form database by Id',
     args: {
       id: {type: GraphQLString, description: 'Id of category to delete'}
     },
-    description: 'Deletes category form database by Id',
     resolve: (source, args) => {
       return new Promise((resolve, reject) => {
         Category.deleteOne({_id: args.id}, (err) => {

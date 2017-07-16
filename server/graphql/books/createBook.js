@@ -14,10 +14,10 @@ const {
 const createBook = {
   createBook: {
     type: BookType,
+    description: 'Creates new book in the database',
     args: {
       book: {type: BookInputType, description: 'Book input object'}
     },
-    description: 'Creates new book in the database',
     resolve: (source, args) => {
       return new Promise((resolve, reject) => {
         const {book} = args

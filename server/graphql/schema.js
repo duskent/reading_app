@@ -5,14 +5,15 @@ const createCategory = require('./categories/createCategory')
 const updateCategory = require('./categories/updateCategory')
 const deleteCategory = require('./categories/deleteCategory')
 // Books
-const getBooks = require('./books/getBooks');
+const getBooks = require('./books/getBooks')
+const getBook = require('./books/getBook')
 const createBook = require('./books/createBook')
 // Utils
 const _ = require('lodash')
 
 const Query = new GraphQLObjectType({
   name: 'RootQuery',
-  fields: _.assign(getCategories, getBooks)
+  fields: _.assign(getCategories, getBooks, getBook)
 })
 
 const Mutation = new GraphQLObjectType({
