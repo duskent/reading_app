@@ -1,27 +1,24 @@
-const CategoryType = require('../types/CategoryType')
 const Category = require('../../db/models/Category')
+// Types
+const CategoryType = require('../types/CategoryType')
+const CategoryInputType = require('../types/CategoryInputType')
+// GraphQL
 const {GraphQLString} = require('graphql')
 
 const createCategory = {
   createCategory: {
     type: CategoryType,
     args: {
-      name: {type: GraphQLString, description: 'Name of a new category'}
+      category: {type: CategoryInputType, description: 'Input category'}
     },
     description: 'Creates new category in the database',
     resolve: (source, args) => {
       return new Promise((resolve, reject) => {
-        const {name} = args
+        const {category} = args
 
-        if (!name) {
-          reject('Specify name of the category')
-        }
-
-        const newCategory = {name}
-
-        Category.create(newCategory, (err, category) => {
+        Category.create(category, (err, newCategory) => {
           if (err) reject(err)
-          else resolve(category)
+          else resolve(newCategory)
         })
       })
     }
