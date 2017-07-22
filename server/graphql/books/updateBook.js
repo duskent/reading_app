@@ -11,24 +11,28 @@ const {
   GraphQLInputObjectType
 } = require('graphql')
 
-const createBook = {
-  createBook: {
+const updateBook = {
+  updateBook: {
     type: BookType,
+    description: 'Updates book in the db',
     args: {
-      book: {type: BookInputType, description: 'Book input object'}
+      id: {
+        type: new GraphQLNonNull(GraphQLString),
+        description: 'Id of the book you want to update'
+      },
+      book: {type: BookInputType, description: 'Input book'}
     },
-    description: 'Creates new book in the database',
     resolve: (source, args) => {
       return new Promise((resolve, reject) => {
-        const {book} = args
+        const {id, book} = args
 
-        Book.create(book, (err, newBook) => {
+        Book.findOneAndUpdate({_id: id}, book, {new: true}, (err, updatedBook) => {
           if (err) reject(err)
-          else resolve(newBook)
+          else resolve(updatedBook)
         })
       })
     }
   }
 }
 
-module.exports = createBook
+module.exports = updateBook

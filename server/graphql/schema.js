@@ -8,6 +8,7 @@ const deleteCategory = require('./categories/deleteCategory')
 const getBooks = require('./books/getBooks')
 const getBook = require('./books/getBook')
 const createBook = require('./books/createBook')
+const updateBook = require('./books/updateBook');
 const deleteBook = require('./books/deleteBook')
 // Utils
 const _ = require('lodash')
@@ -24,6 +25,7 @@ const Mutation = new GraphQLObjectType({
     updateCategory,
     deleteCategory,
     createBook,
+    updateBook,
     deleteBook
   )
 })
