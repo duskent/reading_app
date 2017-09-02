@@ -12,6 +12,7 @@ const createBook = require('./books/createBook')
 const updateBook = require('./books/updateBook')
 const deleteBook = require('./books/deleteBook')
 const addCategoryToBook = require('./books/addCategoryToBook')
+const removeCategoryFromBook = require('./books/removeCategoryFromBook')
 // Utils
 const _ = require('lodash')
 
@@ -34,7 +35,8 @@ const Mutation = new GraphQLObjectType({
     createBook,
     updateBook,
     deleteBook,
-    addCategoryToBook
+    addCategoryToBook,
+    removeCategoryFromBook
   )
 })
 
