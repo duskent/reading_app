@@ -1,5 +1,6 @@
 const {GraphQLObjectType, GraphQLSchema} = require('graphql')
 // Categories
+const getCategory = require('./categories/getCategory')
 const getCategories = require('./categories/getCategories')
 const createCategory = require('./categories/createCategory')
 const updateCategory = require('./categories/updateCategory')
@@ -15,7 +16,12 @@ const _ = require('lodash')
 
 const Query = new GraphQLObjectType({
   name: 'RootQuery',
-  fields: _.assign(getCategories, getBooks, getBook)
+  fields: _.assign(
+    getCategory,
+    getCategories,
+    getBook,
+    getBooks
+  )
 })
 
 const Mutation = new GraphQLObjectType({
