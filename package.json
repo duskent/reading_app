@@ -13,7 +13,8 @@
     "express-graphql": "^0.6.6",
     "graphql": "^0.10.3",
     "lodash": "^4.17.4",
-    "mongoose": "^4.10.8"
+    "mongoose": "^4.10.8",
+    "transliteration": "^1.6.2"
   },
   "devDependencies": {
     "nodemon": "^1.12.0"
