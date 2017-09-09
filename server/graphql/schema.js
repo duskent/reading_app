@@ -6,6 +6,7 @@ const createCategory = require('./categories/createCategory')
 const updateCategory = require('./categories/updateCategory')
 const deleteCategory = require('./categories/deleteCategory')
 const addBookToCategory = require('./categories/addBookToCategory')
+const removeBookFromCategory = require('./categories/removeBookFromCategory')
 // Books
 const getBooks = require('./books/getBooks')
 const getBook = require('./books/getBook')
@@ -34,6 +35,7 @@ const Mutation = new GraphQLObjectType({
     updateCategory,
     deleteCategory,
     addBookToCategory,
+    removeBookFromCategory,
     createBook,
     updateBook,
     deleteBook,
