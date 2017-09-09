@@ -6,7 +6,22 @@
   "license": "MIT",
   "scripts": {
     "start": "node server/index.js",
-    "local": "nodemon server/index.js"
+    "local": "nodemon server/index.js",
+    "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "./dist"
+    ],
+    "coverageReporters": [
+      "lcov",
+      "html"
+    ],
+    "moduleNameMapper": {
+      "^mongoose$": "<rootDir>/node_modules/mongoose"
+    }
   },
   "dependencies": {
     "express": "^4.15.3",
@@ -17,6 +32,8 @@
     "transliteration": "^1.6.2"
   },
   "devDependencies": {
+    "jest": "21.0.2",
+    "jest-cli": "21.0.2",
     "nodemon": "^1.12.0"
   }
 }
