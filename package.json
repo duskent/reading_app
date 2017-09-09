@@ -5,7 +5,8 @@
   "author": "Julian Ronayi <yuliy.ronayi@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "local": "nodemon server/index.js"
   },
   "dependencies": {
     "express": "^4.15.3",
@@ -13,5 +14,8 @@
     "graphql": "^0.10.3",
     "lodash": "^4.17.4",
     "mongoose": "^4.10.8"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.0"
   }
 }
