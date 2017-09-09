@@ -1,3 +1,4 @@
+const Category = require('../../db/models/Category.js')
 const {
   GraphQLObjectType,
   GraphQLInt,
@@ -19,7 +20,17 @@ const BookType = new GraphQLObjectType({
     slug: {type: GraphQLString, description: 'Book\'s slug'},
     categories: {
       type: new GraphQLList(CategoryType),
-      description: 'Categories in which current book belongs'
+      description: 'Categories in which current book belongs',
+      resolve: (source, args) => {
+        const categoryNames = source.categories.map(c => c.name)
+
+        return new Promise((resolve, reject) => {
+          Category.find({name: {$in: categoryNames}}, (err, categories) => {
+            if (err) reject(err)
+            else resolve(categories)
+          })
+        })
+      }
     }
   })
 })
