@@ -1,19 +1,18 @@
 // Schema
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 // Slugify
-const {slugify} = require('transliteration')
+import {slugify} from 'transliteration'
 
 const categorySchema = new Schema({
   name: {type: String, required: true},
   slug: {type: String}
 })
 
+// Do not change to es6 arrow function
 categorySchema.pre('save', function (next) {
   this.slug = slugify(this.name)
   next()
 })
 
-const Category = mongoose.model('Category', categorySchema)
-
-module.exports = Category
+export default mongoose.model('Category', categorySchema)

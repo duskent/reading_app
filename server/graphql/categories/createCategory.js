@@ -1,9 +1,7 @@
-const Category = require('../../db/models/Category')
+import Category from '../../db/models/Category'
 // Types
-const CategoryType = require('../types/CategoryType')
-const CategoryInputType = require('../types/CategoryInputType')
-// GraphQL
-const {GraphQLString} = require('graphql')
+import CategoryType from '../types/CategoryType'
+import CategoryInputType from '../types/CategoryInputType'
 
 const createCategory = {
   createCategory: {
@@ -12,17 +10,10 @@ const createCategory = {
     args: {
       category: {type: CategoryInputType, description: 'Input category'}
     },
-    resolve: (source, args) => {
-      return new Promise((resolve, reject) => {
-        const {category} = args
-
-        Category.create(category, (err, newCategory) => {
-          if (err) reject(err)
-          else resolve(newCategory)
-        })
-      })
+    resolve: async (source, args) => {
+      return await Category.create(args.category)
     }
   }
 }
 
-module.exports = createCategory
+export default createCategory

@@ -1,9 +1,9 @@
-const {
+import {
   GraphQLObjectType,
   GraphQLString,
   GraphQLNonNull,
   GraphQLBoolean,
-} = require('graphql')
+} from 'graphql'
 
 const BookCategoryType = new GraphQLObjectType({
   name: 'BookCategory',
@@ -17,4 +17,4 @@ const BookCategoryType = new GraphQLObjectType({
   })
 })
 
-module.exports = BookCategoryType
+export default BookCategoryType

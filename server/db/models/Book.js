@@ -1,8 +1,8 @@
 // Schema
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 // Slugify
-const {slugify} = require('transliteration')
+import {slugify} from 'transliteration'
 
 const bookSchema = new Schema({
   title: {type: String, required: true},
@@ -12,6 +12,7 @@ const bookSchema = new Schema({
   categories: [{name: {type: String, required: true}}]
 })
 
+// Do not change to es6 arrow function
 bookSchema.pre('save', function (next) {
   if (this.author) {
     this.slug = `${slugify(this.author)}-${slugify(this.title)}`
@@ -22,6 +23,4 @@ bookSchema.pre('save', function (next) {
   next()
 })
 
-const Book = mongoose.model('Book', bookSchema)
-
-module.exports = Book
+export default mongoose.model('Book', bookSchema)

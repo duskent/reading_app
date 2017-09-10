@@ -1,13 +1,10 @@
-const Book = require('../../db/models/Book')
-const Category = require('../../db/models/Category')
+import Book from '../../db/models/Book'
+import Category from '../../db/models/Category'
 // Types
-const CategoryType = require('../types/CategoryType')
-const BookType = require('../types/BookType')
+import CategoryType from '../types/CategoryType'
+import BookType from '../types/BookType'
 // GraphQL
-const {
-  GraphQLString,
-  GraphQLNonNull,
-} = require('graphql')
+import {GraphQLString, GraphQLNonNull} from 'graphql'
 
 const removeBookFromCategory = {
   removeBookFromCategory: {
@@ -23,23 +20,19 @@ const removeBookFromCategory = {
         description: 'Id of the book'
       }
     },
-    resolve: (source, args) => {
-      return new Promise((resolve, reject) => {
-        const {id, bookId} = args
+    resolve: async (source, args) => {
+      const {id, bookId} = args
 
-        Category.findOne({_id: id}, (err, category) => {
-          if (err) reject(err)
+      const category = await Category.findOne({_id: id})
+      const newCategory = {name: category.name}
 
-          const newCategory = {name: category.name}
+      const where = {_id: bookId}
+      const pull = {$pull: {categories: newCategory}}
+      await Book.findOneAndUpdate(where, pull, {new: true})
 
-          Book.findOneAndUpdate({_id: bookId}, {$pull: {categories: newCategory}}, {new: true}, (err, updatedBook) => {
-            if (err) reject(err)
-            else resolve(category)
-          })
-        })
-      })
+      return category
     }
   }
 }
 
-module.exports = removeBookFromCategory
+export default removeBookFromCategory

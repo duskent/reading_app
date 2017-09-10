@@ -1,15 +1,9 @@
-const Book = require('../../db/models/Book')
+import Book from '../../db/models/Book'
 // Types
-const BookType = require('../types/BookType')
-const BookInputType = require('../types/BookInputType')
+import BookType from '../types/BookType'
+import BookInputType from '../types/BookInputType'
 // GraphQL
-const {
-  GraphQLString,
-  GraphQLNonNull,
-  GraphQLBoolean,
-  GraphQLList,
-  GraphQLInputObjectType
-} = require('graphql')
+import {GraphQLString, GraphQLNonNull} from 'graphql'
 
 const updateBook = {
   updateBook: {
@@ -22,15 +16,12 @@ const updateBook = {
       },
       book: {type: BookInputType, description: 'Input book'}
     },
-    resolve: (source, args) => {
-      return new Promise((resolve, reject) => {
-        const {id, book} = args
+    resolve: async (source, args) => {
+      const {id, book} = args
 
-        Book.findOneAndUpdate({_id: id}, book, {new: true}, (err, updatedBook) => {
-          if (err) reject(err)
-          else resolve(updatedBook)
-        })
-      })
+      const updatedBook = await Book.findOneAndUpdate({_id: id}, book, {new: true})
+
+      return updatedBook
     }
   }
 }

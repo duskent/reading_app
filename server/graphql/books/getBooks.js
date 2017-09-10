@@ -1,22 +1,17 @@
-const Book = require('../../db/models/Book')
+import Book from '../../db/models/Book'
 // Types
-const BookType = require('../types/BookType')
+import BookType from '../types/BookType'
 // GraphQL
-const {GraphQLList} = require('graphql')
+import {GraphQLList} from 'graphql'
 
 const getBooks = {
   getBooks: {
     type: new GraphQLList(BookType),
     description: 'Gets list of all books',
-    resolve: () => {
-      return new Promise((resolve, reject) => {
-        Book.find((err, books) => {
-          if (err) reject(err)
-          else resolve(books)
-        })
-      })
+    resolve: async () => {
+      return await Book.find()
     }
   }
 }
 
-module.exports = getBooks
+export default getBooks

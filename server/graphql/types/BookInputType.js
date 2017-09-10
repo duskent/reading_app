@@ -1,12 +1,11 @@
-const {
+import {
   GraphQLInputObjectType,
-  GraphQLInt,
   GraphQLString,
   GraphQLNonNull,
   GraphQLBoolean,
   GraphQLList
-} = require('graphql')
-const CategoryInputType = require('./CategoryInputType')
+} from 'graphql'
+import CategoryInputType from './CategoryInputType'
 
 const BookInputType = new GraphQLInputObjectType({
   name: 'BookInput',
@@ -25,4 +24,4 @@ const BookInputType = new GraphQLInputObjectType({
   })
 })
 
-module.exports = BookInputType
+export default BookInputType
