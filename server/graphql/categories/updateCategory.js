@@ -1,12 +1,9 @@
-const Category = require('../../db/models/Category')
+import Category from '../../db/models/Category'
 // Types
-const CategoryType = require('../types/CategoryType')
-const CategoryInputType = require('../types/CategoryInputType')
+import CategoryType from '../types/CategoryType'
+import CategoryInputType from '../types/CategoryInputType'
 // GraphQL
-const {
-  GraphQLString,
-  GraphQLNonNull,
-} = require('graphql')
+import {GraphQLString, GraphQLNonNull} from 'graphql'
 
 const updateCategory = {
   updateCategory: {
@@ -19,17 +16,12 @@ const updateCategory = {
       },
       category: {type: CategoryInputType, description: 'Input category'}
     },
-    resolve: (source, args) => {
-      return new Promise((resolve, reject) => {
-        const {id, category} = args
+    resolve: async (source, args) => {
+      const {id, category} = args
 
-        Category.findOneAndUpdate({_id: id}, category, {new: true}, (err, updatedCategory) => {
-          if (err) reject(err)
-          else resolve(updatedCategory)
-        })
-      })
+      return await Category.findOneAndUpdate({_id: id}, category, {new: true})
     }
   }
 }
 
-module.exports = updateCategory
+export default updateCategory

@@ -1,15 +1,7 @@
-const Book = require('../../db/models/Book')
+import Book from '../../db/models/Book'
 // Types
-const BookType = require('../types/BookType')
-const BookInputType = require('../types/BookInputType')
-// GraphQL
-const {
-  GraphQLString,
-  GraphQLNonNull,
-  GraphQLBoolean,
-  GraphQLList,
-  GraphQLInputObjectType
-} = require('graphql')
+import BookType from '../types/BookType'
+import BookInputType from '../types/BookInputType'
 
 const createBook = {
   createBook: {
@@ -18,17 +10,14 @@ const createBook = {
     args: {
       book: {type: BookInputType, description: 'Book input object'}
     },
-    resolve: (source, args) => {
-      return new Promise((resolve, reject) => {
-        const {book} = args
+    resolve: async (source, args) => {
+      const {book} = args
 
-        Book.create(book, (err, newBook) => {
-          if (err) reject(err)
-          else resolve(newBook)
-        })
-      })
+      const newBook = await Book.create(book)
+
+      return newBook
     }
   }
 }
 
-module.exports = createBook
+export default createBook

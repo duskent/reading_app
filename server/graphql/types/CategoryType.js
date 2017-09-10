@@ -1,7 +1,7 @@
-const Book = require('../../db/models/Book')
+import Book from '../../db/models/Book'
 // GraphQLTypes
-const BookCategoryType = require('./BookCategoryType')
-const {GraphQLObjectType, GraphQLInt, GraphQLString, GraphQLList} = require('graphql')
+import BookCategoryType from './BookCategoryType'
+import {GraphQLObjectType, GraphQLString, GraphQLList} from 'graphql'
 
 const CategoryType = new GraphQLObjectType({
   name: 'Category',
@@ -23,18 +23,13 @@ const CategoryType = new GraphQLObjectType({
       name: 'CategoryBook',
       type: new GraphQLList(BookCategoryType),
       description: 'Books included in this catagory',
-      resolve: (source, args) => {
-        return new Promise((resolve, reject) => {
-          const name = source.name
+      resolve: async (source, args) => {
+        const name = source.name
 
-          Book.find({'categories.name': name}, (err, books) => {
-            if (err) reject(err)
-            else resolve(books)
-          })
-        })
+        return await Book.find({'categories.name': name})
       }
     }
   })
 })
 
-module.exports = CategoryType
+export default CategoryType

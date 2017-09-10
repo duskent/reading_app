@@ -1,15 +1,9 @@
-const Book = require('../../db/models/Book')
+import Book from '../../db/models/Book'
 // Types
-const BookType = require('../types/BookType')
-const CategoryInputType = require('../types/CategoryInputType')
+import BookType from '../types/BookType'
+import CategoryInputType from '../types/CategoryInputType'
 // GraphQL
-const {
-  GraphQLString,
-  GraphQLNonNull,
-  GraphQLBoolean,
-  GraphQLList,
-  GraphQLInputObjectType
-} = require('graphql')
+import {GraphQLString, GraphQLNonNull} from 'graphql'
 
 const removeCategoryFromBook = {
   removeCategoryFromBook: {
@@ -22,17 +16,16 @@ const removeCategoryFromBook = {
       },
       category: {type: CategoryInputType, description: 'Removed category'}
     },
-    resolve: (source, args) => {
-      return new Promise((resolve, reject) => {
-        const {id, category} = args
+    resolve: async (source, args) => {
+      const {id, category} = args
+      const where = {_id: id}
+      const pull = {$pull: {categories: category}}
 
-        Book.findOneAndUpdate({_id: id}, {$pull: {categories: category}}, {new: true}, (err, updatedBook) => {
-          if (err) reject(err)
-          else resolve(updatedBook)
-        })
-      })
+      const updatedBook = await Book.findOneAndUpdate(where, pull, {new: true})
+
+      return updatedBook
     }
   }
 }
 
-module.exports = removeCategoryFromBook
+export default removeCategoryFromBook

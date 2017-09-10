@@ -1,20 +1,16 @@
-const CategoryType = require('../types/CategoryType')
-const {GraphQLList} = require('graphql')
-const Category = require('../../db/models/Category')
+import Category from '../../db/models/Category'
+// Types
+import CategoryType from '../types/CategoryType'
+import {GraphQLList} from 'graphql'
 
 const getCategories = {
   getCategories: {
     type: new GraphQLList(CategoryType),
     description: 'Gets list of all categories',
-    resolve: () => {
-      return new Promise((resolve, reject) => {
-        Category.find((err, categories) => {
-          if (err) reject(err)
-          else resolve(categories)
-        })
-      })
+    resolve: async () => {
+      return await Category.find()
     }
   }
 }
 
-module.exports = getCategories
+export default getCategories

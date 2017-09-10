@@ -1,11 +1,8 @@
-const Category = require('../../db/models/Category')
+import Category from '../../db/models/Category'
 // Types
-const CategoryType = require('../types/CategoryType')
+import CategoryType from '../types/CategoryType'
 // GraphQL
-const {
-  GraphQLString,
-  GraphQLNonNull
-} = require('graphql')
+import {GraphQLString, GraphQLNonNull} from 'graphql'
 
 const getCategory = {
   getCategory: {
@@ -14,17 +11,12 @@ const getCategory = {
     args: {
       id: {type: new GraphQLNonNull(GraphQLString), description: 'Id of fetched category'}
     },
-    resolve: (source, args) => {
-      return new Promise((resolve, reject) => {
-        const {id} = args
+    resolve: async (source, args) => {
+      const {id} = args
 
-        Category.findOne({_id: id}, (err, category) => {
-          if (err) reject(err)
-          else resolve(category)
-        })
-      })
+      return await Category.findOne({_id: id})
     }
   }
 }
 
-module.exports = getCategory
+export default getCategory

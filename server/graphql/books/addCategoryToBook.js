@@ -1,15 +1,9 @@
-const Book = require('../../db/models/Book')
+import Book from '../../db/models/Book'
 // Types
-const BookType = require('../types/BookType')
-const CategoryInputType = require('../types/CategoryInputType')
+import BookType from '../types/BookType'
+import CategoryInputType from '../types/CategoryInputType'
 // GraphQL
-const {
-  GraphQLString,
-  GraphQLNonNull,
-  GraphQLBoolean,
-  GraphQLList,
-  GraphQLInputObjectType
-} = require('graphql')
+import {GraphQLString, GraphQLNonNull} from 'graphql'
 
 const addCategoryToBook = {
   addCategoryToBook: {
@@ -22,17 +16,16 @@ const addCategoryToBook = {
       },
       category: {type: CategoryInputType, description: 'Inserted category'}
     },
-    resolve: (source, args) => {
-      return new Promise((resolve, reject) => {
-        const {id, category} = args
+    resolve: async (source, args) => {
+      const {id, category} = args
+      const where = {_id: id}
+      const push = {$push: {categories: category}}
 
-        Book.findOneAndUpdate({_id: id}, {$push: {categories: category}}, {new: true}, (err, updatedBook) => {
-          if (err) reject(err)
-          else resolve(updatedBook)
-        })
-      })
+      const updatedBook = await Book.findOneAndUpdate(where, push, {new: true})
+
+      return updatedBook
     }
   }
 }
 
-module.exports = addCategoryToBook
+export default addCategoryToBook

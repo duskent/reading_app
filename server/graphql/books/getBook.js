@@ -1,11 +1,8 @@
-const Book = require('../../db/models/Book')
+import Book from '../../db/models/Book'
 // Types
-const BookType = require('../types/BookType')
+import BookType from '../types/BookType'
 // GraphQL
-const {
-  GraphQLString,
-  GraphQLNonNull
-} = require('graphql')
+import {GraphQLString, GraphQLNonNull} from 'graphql'
 
 const getBook = {
   getBook: {
@@ -14,17 +11,10 @@ const getBook = {
     args: {
       id: {type: new GraphQLNonNull(GraphQLString), description: 'Id of fetched book'}
     },
-    resolve: (source, args) => {
-      return new Promise((resolve, reject) => {
-        const {id} = args
-
-        Book.findOne({_id: id}, (err, book) => {
-          if (err) reject(err)
-          else resolve(book)
-        })
-      })
+    resolve: async (source, args) => {
+      return await Book.findOne({_id: args.id})
     }
   }
 }
 
-module.exports = getBook
+export default getBook

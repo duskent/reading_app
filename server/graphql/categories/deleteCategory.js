@@ -1,9 +1,9 @@
-const Category = require('../../db/models/Category')
+import Category from '../../db/models/Category'
 // Types
-const CategoryType = require('../types/CategoryType')
-const Message = require('../types/Message')
+import CategoryType from '../types/CategoryType'
+import Message from '../types/Message'
 // GraphQL
-const {GraphQLString} = require('graphql')
+import {GraphQLString} from 'graphql'
 
 const deleteCategory = {
   deleteCategory: {
@@ -13,14 +13,11 @@ const deleteCategory = {
       id: {type: GraphQLString, description: 'Id of category to delete'}
     },
     resolve: (source, args) => {
-      return new Promise((resolve, reject) => {
-        Category.deleteOne({_id: args.id}, (err) => {
-          if (err) reject(err)
-          else resolve({message: 'success'})
-        })
-      })
+      Category.deleteOne({_id: args.id})
+
+      return {message: 'success'}
     }
   }
 }
 
-module.exports = deleteCategory
+export default deleteCategory

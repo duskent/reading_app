@@ -1,26 +1,24 @@
-const {GraphQLObjectType, GraphQLSchema} = require('graphql')
+import {GraphQLObjectType, GraphQLSchema} from 'graphql'
 // Categories
-const getCategory = require('./categories/getCategory')
-const getCategories = require('./categories/getCategories')
-const createCategory = require('./categories/createCategory')
-const updateCategory = require('./categories/updateCategory')
-const deleteCategory = require('./categories/deleteCategory')
-const addBookToCategory = require('./categories/addBookToCategory')
-const removeBookFromCategory = require('./categories/removeBookFromCategory')
+import getCategory from './categories/getCategory'
+import getCategories from './categories/getCategories'
+import createCategory from './categories/createCategory'
+import updateCategory from './categories/updateCategory'
+import deleteCategory from './categories/deleteCategory'
+import addBookToCategory from './categories/addBookToCategory'
+import removeBookFromCategory from './categories/removeBookFromCategory'
 // Books
-const getBooks = require('./books/getBooks')
-const getBook = require('./books/getBook')
-const createBook = require('./books/createBook')
-const updateBook = require('./books/updateBook')
-const deleteBook = require('./books/deleteBook')
-const addCategoryToBook = require('./books/addCategoryToBook')
-const removeCategoryFromBook = require('./books/removeCategoryFromBook')
-// Utils
-const _ = require('lodash')
+import getBooks from './books/getBooks'
+import getBook from './books/getBook'
+import createBook from './books/createBook'
+import updateBook from './books/updateBook'
+import deleteBook from './books/deleteBook'
+import addCategoryToBook from './books/addCategoryToBook'
+import removeCategoryFromBook from './books/removeCategoryFromBook'
 
 const Query = new GraphQLObjectType({
   name: 'RootQuery',
-  fields: _.assign(
+  fields: Object.assign({},
     getCategory,
     getCategories,
     getBook,
@@ -30,7 +28,7 @@ const Query = new GraphQLObjectType({
 
 const Mutation = new GraphQLObjectType({
   name: 'RootMutation',
-  fields: _.assign(
+  fields: Object.assign({},
     createCategory,
     updateCategory,
     deleteCategory,
@@ -49,4 +47,4 @@ const Schema = new GraphQLSchema({
   mutation: Mutation
 })
 
-module.exports = Schema
+export default Schema

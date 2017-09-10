@@ -1,13 +1,9 @@
-const Book = require('../../db/models/Book')
+import Book from '../../db/models/Book'
 // Types
-const BookType = require('../types/BookType')
-const Message = require('../types/Message');
+import BookType from '../types/BookType'
+import Message from '../types/Message'
 // GraphQL
-const {
-  GraphQLString,
-  GraphQLObjectType,
-  GraphQLNonNull,
-} = require('graphql')
+import {GraphQLString, GraphQLNonNull} from 'graphql'
 
 const deteleBook = {
   deteleBook: {
@@ -20,14 +16,11 @@ const deteleBook = {
       }
     },
     resolve: (source, args) => {
-      return new Promise((resolve, reject) => {
-        Book.deleteOne({_id: args.id}, (err) => {
-          if (err) reject(err)
-          else resolve({message: 'success'})
-        })
-      })
+      Book.deleteOne({_id: args.id})
+
+      return {message: 'success'}
     }
   }
 }
 
-module.exports = deteleBook
+export default deteleBook

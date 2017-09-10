@@ -1,4 +1,4 @@
-const {GraphQLObjectType, GraphQLString} = require('graphql')
+import {GraphQLObjectType, GraphQLString} from 'graphql'
 
 const Message = new GraphQLObjectType({
   name: 'Message',
@@ -8,4 +8,4 @@ const Message = new GraphQLObjectType({
   }
 })
 
-module.exports = Message
+export default Message

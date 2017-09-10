@@ -1,23 +1,12 @@
 // Express
-const express = require('express')
-const app = express()
+import express from 'express'
 // graphql
-const graphql = require('./graphql')
+import graphql from './graphql'
 // DB
-const db = require('./db')
-const Category = require('./db/models/Category')
-
+import db from './db'
+// Initialization
+const app = express()
+// Middlewares
 app.use(graphql)
 
-app.get('/', function (req, res) {
-  Category.find({}, function (err, data) {
-    if (err) throw err
-    res.json({
-      categories: data
-    })
-  })
-})
-
-app.listen(3000, function () {
-  console.log('Listening port 3000');
-})
+app.listen(3000, () => console.log('Listening port 3000'))
