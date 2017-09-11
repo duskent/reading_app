@@ -23,7 +23,7 @@ const CategoryType = new GraphQLObjectType({
       name: 'CategoryBook',
       type: new GraphQLList(BookCategoryType),
       description: 'Books included in this catagory',
-      resolve: async (source, args) => {
+      resolve: async (source) => {
         const name = source.name
 
         return await Book.find({'categories.name': name})

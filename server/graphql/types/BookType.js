@@ -20,7 +20,7 @@ const BookType = new GraphQLObjectType({
     categories: {
       type: new GraphQLList(CategoryType),
       description: 'Categories in which current book belongs',
-      resolve: async (source, args) => {
+      resolve: async (source) => {
         const categoryNames = source.categories.map(c => c.name)
 
         return await Category.find({name: {$in: categoryNames}})

@@ -3,8 +3,6 @@ dotenv.load()
 
 import mongoose from 'mongoose'
 
-const { ObjectId } = mongoose.Types
-
 process.env.NODE_ENV = 'test'
 
 const config = {
@@ -40,12 +38,12 @@ function connect() {
       .once('open', resolve)
       .on('error', (e) => {
         if (e.message.code === 'ETIMEDOUT') {
-          console.log(e)
+          console.log(e) //eslint-disable-line
 
           mongoose.connect(mongoUri, options)
         }
 
-        console.log(e)
+        console.log(e) //eslint-disable-line
         reject(e)
       })
   })
@@ -58,7 +56,7 @@ function clearDatabase() {
     for (const i in mongoose.connection.collections) {
       mongoose.connection.collections[i].remove(function() {
         cont++
-        if(cont >= max) {
+        if (cont >= max) {
           resolve()
         }
       })

@@ -2,7 +2,6 @@ import Book from '../../db/models/Book'
 import Category from '../../db/models/Category'
 // Types
 import CategoryType from '../types/CategoryType'
-import BookType from '../types/BookType'
 // GraphQL
 import {GraphQLString, GraphQLNonNull} from 'graphql'
 

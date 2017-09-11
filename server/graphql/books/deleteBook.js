@@ -1,6 +1,5 @@
 import Book from '../../db/models/Book'
 // Types
-import BookType from '../types/BookType'
 import Message from '../types/Message'
 // GraphQL
 import {GraphQLString, GraphQLNonNull} from 'graphql'

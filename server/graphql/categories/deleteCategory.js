@@ -1,6 +1,5 @@
 import Category from '../../db/models/Category'
 // Types
-import CategoryType from '../types/CategoryType'
 import Message from '../types/Message'
 // GraphQL
 import {GraphQLString} from 'graphql'
