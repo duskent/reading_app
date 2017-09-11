@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 
 const { ObjectId } = mongoose.Types
 
@@ -63,9 +63,9 @@ function clearDatabase() {
   })
 }
 
-const setupTest = () => {
-  connect()
-  clearDatabase()
+const setupTest = async () => {
+  await connect()
+  await clearDatabase()
 }
 
-module.exports = setupTest
+export default setupTest
