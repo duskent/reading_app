@@ -1,3 +1,6 @@
+import dotenv from 'dotenv'
+dotenv.load()
+
 import mongoose from 'mongoose'
 
 const { ObjectId } = mongoose.Types
@@ -6,7 +9,7 @@ process.env.NODE_ENV = 'test'
 
 const config = {
   db: {
-    test: 'mongodb://localhost/test',
+    test: process.env.TEST_DB,
   },
   connection: null,
 }
@@ -17,7 +20,7 @@ function connect() {
       return resolve()
     }
 
-    const mongoUri = 'mongodb://localhost/test'
+    const mongoUri = process.env.TEST_DB
 
     mongoose.Promise = Promise
 

@@ -21,7 +21,7 @@
       "lcov",
       "html"
     ],
-    "collectCoverageFrom" : [
+    "collectCoverageFrom": [
       "**/server/db/**",
       "**/server/graphql/**",
       "!**/node_modules/**",
@@ -32,6 +32,7 @@
     }
   },
   "dependencies": {
+    "dotenv": "^4.0.0",
     "express": "^4.15.3",
     "express-graphql": "^0.6.6",
     "graphql": "^0.10.3",
