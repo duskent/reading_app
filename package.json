@@ -9,7 +9,7 @@
     "local": "nodemon public/server.js",
     "build": "webpack",
     "build:watch": "webpack -w",
-    "test": "jest --forceExit --coverage",
+    "test": "jest --forceExit --coverage && codecov -t cfe7f70c-b7b6-40e6-a44d-25ab3f033979",
     "test-last-commit": "jest --forceExit --no-cache --onlyChanged --lastCommit",
     "test:watch": "jest --watch",
     "lint": "eslint --cache ./server"
@@ -25,6 +25,8 @@
       "lcov",
       "html"
     ],
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true,
     "collectCoverageFrom": [
       "**/server/db/**",
       "**/server/graphql/**",
@@ -35,8 +37,8 @@
       "^mongoose$": "<rootDir>/node_modules/mongoose"
     }
   },
-  "precommit": "lint",
-  "prepush": "test-last-commit",
+  "precommit": ["lint", "test-last-commit"],
+  "prepush": "test",
   "dependencies": {
     "dotenv": "^4.0.0",
     "express": "^4.15.3",
