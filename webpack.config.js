@@ -1,6 +1,6 @@
-const webpack = require('webpack')
 const path = require('path')
 const fs = require('fs')
+const webpack = require('webpack')
 
 const nodeModules = {}
 fs.readdirSync('node_modules')
@@ -19,6 +19,21 @@ module.exports = {
     filename: 'server.js'
   },
   externals: nodeModules,
+  // plugins
+  plugins: [
+    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      beautify: false,
+      comments: false,
+      compress: {
+        sequences: true,
+        booleans: true,
+        loops: true,
+        unused: true,
+        warnings: false
+      }
+    })
+  ],
   // loaders
   module: {
     loaders: [
