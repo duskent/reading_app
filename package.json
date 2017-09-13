@@ -37,10 +37,7 @@
       "^mongoose$": "<rootDir>/node_modules/mongoose"
     }
   },
-  "precommit": [
-    "lint",
-    "test-last-commit"
-  ],
+  "precommit": "lint",
   "prepush": "test",
   "dependencies": {
     "dotenv": "^4.0.0",
