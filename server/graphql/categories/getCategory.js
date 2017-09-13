@@ -14,7 +14,11 @@ const getCategory = {
     resolve: async (source, args) => {
       const {id} = args
 
-      return await Category.findOne({_id: id})
+      try {
+        return await Category.findOne({_id: id})
+      } catch (e) {
+        throw new Error(`Could not find Category with id ${id}`)
+      }
     }
   }
 }
