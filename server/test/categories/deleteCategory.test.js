@@ -22,9 +22,12 @@ describe('deleteCategory', () => {
     const result = await graphql(Schema, query(category.id))
     const {data: {deleteCategory}} = result
 
-    const foundCategory = await Category.findOne({_id: category.id})
+    expect(deleteCategory.message).toEqual('success')
 
-    expect(await deleteCategory.message).toEqual('success')
-    expect(await foundCategory).toEqual(null)
+    try {
+      await Category.findOne({name: 'Test Category'})
+    } catch (object) {
+      expect(object).toEqual(null)
+    }
   })
 })
