@@ -21,13 +21,21 @@ const loadItems = async () => {
   await category.save()
   await book.save()
 
+  await graphql(Schema, `
+    mutation addBookToCategory {
+      addBookToCategory(id: "${category.id}", bookId: "${book.id}") {
+        id
+      }
+    }
+  `)
+
   return {category, book}
 }
 
-describe('addBookToCategory', () => {
+describe('removeBookFromCategory', () => {
   const query = (id, bookId) => `
-    mutation addBookToCategory {
-      addBookToCategory(id: "${id}", bookId: "${bookId}") {
+    mutation removeBookFromCategory {
+      removeBookFromCategory(id: "${id}", bookId: "${bookId}") {
         id
         name
         slug
@@ -39,33 +47,38 @@ describe('addBookToCategory', () => {
     }
   `
 
-  it('Should add book to category books array', async () => {
+  it('Should remove book from category books array', async () => {
     const {category, book} = await loadItems()
     const result = await graphql(Schema, query(category.id, book.id))
-    const {data: {addBookToCategory}} = result
+    const {data: {removeBookFromCategory}} = result
 
-    expect(addBookToCategory.books.length).toEqual(1)
-    expect(addBookToCategory.books[0]).toEqual({
-      author: 'Test Author',
-      title: 'Test title'
-    })
+    expect(removeBookFromCategory.books.length).toEqual(0)
   })
 
-  it('Should not add anything when pass wrong bookId', async () => {
+  it('Should not delete book from db', async () => {
+    const {category, book} = await loadItems()
+    await graphql(Schema, query(category.id, book.id))
+
+    const foundBook = await Book.findOne({title: book.title})
+
+    expect(foundBook).not.toBe(null)
+  })
+
+  it('Should not remove anything when pass wrong bookId', async () => {
     const {category} = await loadItems()
     const result = await graphql(Schema, query(category.id, 'wrong_id'))
-    const {data: {addBookToCategory}, errors} = result
+    const {data: {removeBookFromCategory}, errors} = result
 
-    expect(addBookToCategory).toBe(null)
+    expect(removeBookFromCategory).toBe(null)
     expect(errors).toBeDefined()
   })
 
   it('Should not add anything when pass wrond category id', async () => {
     const {book} = await loadItems()
     const result = await graphql(Schema, query('wrong_id', book.id))
-    const {data: {addBookToCategory}, errors} = result
+    const {data: {removeBookFromCategory}, errors} = result
 
-    expect(addBookToCategory).toBe(null)
+    expect(removeBookFromCategory).toBe(null)
     expect(errors).toBeDefined()
   })
 })
