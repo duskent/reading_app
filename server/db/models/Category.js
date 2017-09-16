@@ -10,8 +10,17 @@ const categorySchema = new Schema({
 })
 
 // Do not change to es6 arrow function
+
 categorySchema.pre('save', function (next) {
   this.slug = slugify(this.name)
+  next()
+})
+
+categorySchema.pre('findOneAndUpdate', function (next) {
+  const _id = this._conditions._id
+  const slug = slugify(this._update.name)
+
+  this.findOneAndUpdate({_id}, {slug})
   next()
 })
 
