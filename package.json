@@ -31,8 +31,8 @@
       "**/server/db/**",
       "**/server/graphql/**",
       "!**/node_modules/**",
-      "**/server/db/index.js",
-      "**/server/graphql/index.js",
+      "!**/server/db/index.js",
+      "!**/server/graphql/index.js",
       "!**/server/test/**"
     ],
     "moduleNameMapper": {
