@@ -23,4 +23,13 @@ bookSchema.pre('save', function (next) {
   next()
 })
 
+bookSchema.pre('findOneAndUpdate', function (next) {
+  const _id = this._conditions._id
+  const slug = `${slugify(this._update.author)}-${slugify(this._update.title)}`
+
+  this.findOneAndUpdate({_id}, {slug})
+  next()
+})
+
+
 export default mongoose.model('Book', bookSchema)
