@@ -4,8 +4,8 @@ import Message from '../types/Message'
 // GraphQL
 import {GraphQLString, GraphQLNonNull} from 'graphql'
 
-const deteleBook = {
-  deteleBook: {
+const deleteBook = {
+  deleteBook: {
     type: Message,
     description: 'Deletes Book form database by Id',
     args: {
@@ -22,4 +22,4 @@ const deteleBook = {
   }
 }
 
-export default deteleBook
+export default deleteBook
