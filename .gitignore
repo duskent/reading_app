@@ -566,3 +566,4 @@ __pycache__/
 # End of https://www.gitignore.io/api/windows,osx,linux,node,eclipse,jetbrains,visualstudio,sublimetext
 public/server.js
 public/client.js
+public/*.js.map
