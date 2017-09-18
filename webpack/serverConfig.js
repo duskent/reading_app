@@ -15,7 +15,7 @@ module.exports = {
   entry: ['babel-polyfill', './server/index.js'],
   target: 'node',
   output: {
-    path: join(__dirname, 'public'),
+    path: join(__dirname, '../public'),
     filename: 'server.js'
   },
   externals: nodeModules,

@@ -1,3 +1,9 @@
-const array = [1, 2, 3]
-test
-console.log(array) //eslint-disable-line
+import React from 'react'
+import ReactDOM from 'react-dom'
+// Components
+import App from './App'
+
+ReactDOM.render(
+  <App welcome={'Hello World'} />,
+  document.getElementById('root')
+)
