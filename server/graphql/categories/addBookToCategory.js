@@ -28,7 +28,9 @@ const addBookToCategory = {
       const where = {_id: bookId}
       const push = {$push: {categories: newCategory}}
 
-      return await Book.findOneAndUpdate(where, push, {new: true})
+      await Book.findOneAndUpdate(where, push, {new: true})
+
+      return category
     }
   }
 }
