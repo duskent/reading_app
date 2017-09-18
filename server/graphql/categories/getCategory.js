@@ -12,12 +12,10 @@ const getCategory = {
       id: {type: new GraphQLNonNull(GraphQLString), description: 'Id of fetched category'}
     },
     resolve: async (source, args) => {
-      const {id} = args
-
       try {
-        return await Category.findOne({_id: id})
+        return await Category.findOne({_id: args.id})
       } catch (e) {
-        throw new Error(`Could not find Category with id ${id}`)
+        throw new Error(`Could not find Category with id ${args.id}`)
       }
     }
   }

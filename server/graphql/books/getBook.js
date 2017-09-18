@@ -12,7 +12,11 @@ const getBook = {
       id: {type: new GraphQLNonNull(GraphQLString), description: 'Id of fetched book'}
     },
     resolve: async (source, args) => {
-      return await Book.findOne({_id: args.id})
+      try {
+        return await Book.findOne({_id: args.id})
+      } catch (e) {
+        throw new Error(`Could not find Book with id ${args.id}`)
+      }
     }
   }
 }
