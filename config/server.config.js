@@ -1,6 +1,6 @@
 const fs = require('fs')
 const {join} = require('path')
-const commonPlugins = require('./commonPlugins')
+const webpack = require('webpack')
 
 const nodeModules = {}
 fs.readdirSync('node_modules')
@@ -15,12 +15,24 @@ module.exports = {
   entry: ['babel-polyfill', './server/index.js'],
   target: 'node',
   output: {
-    path: join(__dirname, '../public'),
+    path: join(__dirname, '../build'),
     filename: 'server.js'
   },
   externals: nodeModules,
   // plugins
-  plugins: commonPlugins,
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      beautify: false,
+      comments: false,
+      compress: {
+        sequences: true,
+        booleans: true,
+        loops: true,
+        unused: true,
+        warnings: false
+      }
+    })
+  ],
   //devTool
   devtool: 'source-map',
   // loaders

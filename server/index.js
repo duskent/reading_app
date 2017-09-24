@@ -9,9 +9,9 @@ import './db'
 const app = express()
 // Middlewares
 app.use(graphql)
-app.use('/', express.static('public'))
+app.use('/', express.static('build'))
 app.get( "*", function( req, res ) {
-  res.sendFile(pathUtils.resolve('public', 'index.html' ))
+  res.sendFile(pathUtils.resolve('build', 'index.html' ))
 })
 
 app.listen(process.env.PORT, () => {
