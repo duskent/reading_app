@@ -4,21 +4,32 @@
 
 - Clone repository
 - **yarn install**
+
+## To run project in production mod
 - Build project **yarn build**
 - **yarn start**
 
-## To run project in Dev mod
-- **yarn build:watch**
-- **yarn local**
+## To run server in Dev mod
+- **yarn server-watch**
+- **yarn server**
+
+## To run client dev sever
+- **yarn client**
 
 ## Test
 - **yarn test**
 - **yarn test:watch**
+
+## Lint
+- **yarn lint**
 
 ## Technologies
 - MondoDB and Mongoose package.
 - Backend - NodeJS & Express.
 - GraphQL server on **POST /graphql** endpoint.
 - GraphiQL IDE on **GET /graphql**.
+- Frontend - React, ApolloClient
+- Bootstrap css framework (Reactstrap package)
 - Testing, code coverage - Jest.
 - Linting - ESLint **yarn lint**.
+- Building - Webpack, Babel
