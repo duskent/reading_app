@@ -1,0 +1,9 @@
+.main-hero {
+  margin-top: 1rem;
+}
+
+@media (min-width: 48em) {
+  .main-hero {
+    margin-top: 6rem;
+  }
+}
