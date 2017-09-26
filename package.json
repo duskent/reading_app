@@ -15,7 +15,9 @@
     "test": "jest --forceExit --coverage && codecov -t cfe7f70c-b7b6-40e6-a44d-25ab3f033979",
     "test-last-commit": "jest --forceExit --no-cache --onlyChanged --lastCommit",
     "test:watch": "jest --watch",
-    "lint": "eslint --cache ./server"
+    "lint": "eslint --cache ./server",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "jest": {
     "verbose": true,
@@ -125,6 +127,7 @@
     "pre-commit": "^1.2.2",
     "regenerator-runtime": "^0.11.0",
     "webpack": "3.5.6",
-    "webpack-dev-server": "2.7.1"
+    "webpack-dev-server": "2.7.1",
+    "@kadira/storybook": "^2.21.0"
   }
 }
