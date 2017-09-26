@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
-import {Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink} from 'reactstrap'
+import {NavLink} from 'react-router-dom'
+// Bootstrap
+import {Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem} from 'reactstrap'
 
 export default class NavbarComponent extends Component {
   constructor(props) {
@@ -24,10 +26,10 @@ export default class NavbarComponent extends Component {
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href="/books">Books</NavLink>
+              <NavLink className="nav-link" to="/books">Books</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/categories">Categories</NavLink>
+              <NavLink className="nav-link" to="/categories">Categories</NavLink>
             </NavItem>
           </Nav>
         </Collapse>
