@@ -51,7 +51,6 @@
     "extends": "react-app"
   },
   "precommit": "lint",
-  "prepush": "test",
   "dependencies": {
     "autoprefixer": "7.1.4",
     "babel-core": "6.26.0",
