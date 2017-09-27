@@ -1,0 +1,46 @@
+exports[`default`] = `
+<nav
+  className="navbar navbar-toggleable navbar-light bg-faded">
+  <button
+    className="navbar-toggler navbar-toggler-right"
+    onClick={[Function]}
+    type="button">
+    <span
+      className="navbar-toggler-icon" />
+  </button>
+  <a
+    className="navbar-brand"
+    href="/">
+    Reading App
+  </a>
+  <div
+    className="collapse navbar-collapse"
+    style={Object {}}>
+    <ul
+      className="ml-auto navbar-nav">
+      <li
+        className="nav-item">
+        <a
+          aria-current={false}
+          className="nav-link"
+          href="/books"
+          onClick={[Function]}
+          style={undefined}>
+          Books
+        </a>
+      </li>
+      <li
+        className="nav-item">
+        <a
+          aria-current={false}
+          className="nav-link"
+          href="/categories"
+          onClick={[Function]}
+          style={undefined}>
+          Categories
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+`;

@@ -1,9 +1,13 @@
 .main-hero {
   margin-top: 1rem;
+  text-align: center;
 }
 
 @media (min-width: 48em) {
   .main-hero {
     margin-top: 6rem;
+  }
+  #lead-button {
+    margin-top: 2rem;
   }
 }

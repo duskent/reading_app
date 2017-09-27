@@ -1,5 +1,6 @@
 import React from 'react'
-import {Jumbotron, Button} from 'reactstrap'
+import {NavLink} from 'react-router-dom'
+import {Jumbotron, Col, Row, } from 'reactstrap'
 // Styles
 import './styles.css'
 
@@ -10,7 +11,11 @@ const JumbotronComponent = () =>
     <hr className="my-2" />
     <p>It helps you order you own reading list and find some interesting reading by interests.</p>
     <p className="lead">
-      <Button color="primary">Go to books</Button>
+      <Row>
+        <Col sm={{ size: 6, offset: 1, pull: 2, push: 2 }}>
+          <NavLink id="lead-button" className="nav-link btn btn-lg btn-outline-primary btn-block" to="/books">Go to books</NavLink>
+        </Col>
+      </Row>
     </p>
   </Jumbotron>
 

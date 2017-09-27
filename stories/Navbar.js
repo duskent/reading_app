@@ -4,7 +4,7 @@ import {BrowserRouter} from 'react-router-dom'
 import { storiesOf } from '@kadira/storybook'
 
 const NavBarStories = storiesOf('Navbar', module)
-  .add('main state', () => {
+  .add('default', () => {
     return <BrowserRouter>
       <Navbar />
     </BrowserRouter>
