@@ -5,7 +5,7 @@ const BookCard = () => {
   return (
     <div>
       <Card>
-        <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
+        <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=220%C3%97318&w=220&h=318" alt="Card image cap" />
         <CardBlock>
           <CardTitle>Book Title</CardTitle>
           <CardSubtitle>Book Author</CardSubtitle>
