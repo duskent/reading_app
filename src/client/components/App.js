@@ -5,13 +5,15 @@ import Navbar from './Navbar'
 import Home from '../pages/Home'
 import Books from '../pages/Books'
 import Categories from '../pages/Categories'
+import Category from '../pages/Categories/category'
 
 const App = () =>
   <div>
     <Navbar />
     <Route path="/" exact component={Home} />
     <Route path="/books" component={Books} />
-    <Route path="/categories" component={Categories} />
+    <Route exact path="/categories" component={Categories} />
+    <Route path="/categories/:slug" component={Category} />
     <Redirect to="/" />
   </div>
 
