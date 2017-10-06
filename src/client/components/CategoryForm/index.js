@@ -4,7 +4,7 @@ import { Button, Form, FormGroup, Input, Container, Row, Col } from 'reactstrap'
 import './styles.css'
 
 const CategoryForm = () => (
-  <Container className="category-form">
+  <Container className="form-container">
     <Row>
       <Col sm={{size: 6, offset: 3}}>
         <Form>
