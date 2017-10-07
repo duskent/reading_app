@@ -14,6 +14,8 @@ const BookType = new GraphQLObjectType({
   fields: () => ({
     id: {type: GraphQLString, description: 'Mongo ObjectID'},
     title: {type: new GraphQLNonNull(GraphQLString), description: 'Book title'},
+    description: {type: GraphQLString, description: 'Book\'s description'},
+    cover: {type: GraphQLString, description: 'Book\'s cover image'},
     author: {type: GraphQLString, description: 'Book\'s author'},
     finished: {type: GraphQLBoolean, description: 'Represents reading status of book'},
     slug: {type: GraphQLString, description: 'Book\'s slug'},

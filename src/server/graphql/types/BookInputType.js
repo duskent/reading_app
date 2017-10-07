@@ -16,6 +16,8 @@ const BookInputType = new GraphQLInputObjectType({
       description: 'Book title'
     },
     author: {type: GraphQLString, description: 'Book\'s author'},
+    description: {type: GraphQLString, description: 'Book\'s description'},
+    cover: {type: GraphQLString, description: 'Book\'s cover image'},
     finished: {type: GraphQLBoolean, description: 'Represents reading status of book'},
     categories: {
       type: new GraphQLList(CategoryInputType),

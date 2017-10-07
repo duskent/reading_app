@@ -7,6 +7,8 @@ import {slugify} from 'transliteration'
 const bookSchema = new Schema({
   title: {type: String, required: true},
   author: String,
+  description: String,
+  cover: String,
   finished: {type: Boolean, default: false},
   slug: {type: String},
   categories: [{name: {type: String, required: true}}]
