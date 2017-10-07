@@ -1,2 +1,5 @@
 import './Navbar'
 import './BookCard'
+import './CategoriesList'
+import './BooksList'
+import './BookDetails'

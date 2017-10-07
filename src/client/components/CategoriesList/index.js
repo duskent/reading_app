@@ -1,16 +1,24 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { ListGroup, ListGroupItem } from 'reactstrap'
 import {Link} from 'react-router-dom'
 import './styles.css'
 
-const CategoriesList = () => (
+const CategoriesList = ({categories}) => (
   <ListGroup className="categories-list">
-    <ListGroupItem><Link to="/categories/category-slug">Cras justo odio</Link></ListGroupItem>
-    <ListGroupItem><Link to="/categories/category-slug">Dapibus ac facilisis in</Link></ListGroupItem>
-    <ListGroupItem><Link to="/categories/category-slug">Morbi leo risus</Link></ListGroupItem>
-    <ListGroupItem><Link to="/categories/category-slug">Porta ac consectetur ac</Link></ListGroupItem>
-    <ListGroupItem><Link to="/categories/category-slug">Vestibulum at eros</Link></ListGroupItem>
+    {categories.map(category => (
+      <ListGroupItem>
+        <Link to={`/categories/${category.slug}`}>{category.name}</Link>
+      </ListGroupItem>
+    ))}
   </ListGroup>
 )
+
+CategoriesList.propTypes = {
+  categories: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    slug: PropTypes.string.isRequired,
+  })
+}
 
 export default CategoriesList
