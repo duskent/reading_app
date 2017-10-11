@@ -1,6 +1,6 @@
 import React from 'react'
 import {Container} from 'reactstrap'
-import CategoriesList from '../../components/CategoriesList'
+import CategoriesList from '../../containers/CategoriesList'
 import {Link} from 'react-router-dom'
 
 const Categories = () =>
