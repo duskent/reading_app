@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {Container} from 'reactstrap'
-import BooksList from '../../components/BooksList'
+import BooksList from '../../containers/BooksList'
 
 const Books = () =>
   <Container className="page-container">
