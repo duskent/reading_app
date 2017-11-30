@@ -1,6 +1,6 @@
 import React from 'react'
 import {Container} from 'reactstrap'
-import CategoryForm from '../../components/CategoryForm'
+import CategoryForm from '../../containers/CategoryForm'
 
 const NewCategory = () =>
   <Container className="page-container">

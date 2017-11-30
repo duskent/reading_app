@@ -6,7 +6,6 @@ export default {
     category: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string.isRequired,
-        slug: PropTypes.string.isRequired,
         books: PropTypes.array
       })
     ),

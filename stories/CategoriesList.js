@@ -4,16 +4,19 @@ import {BrowserRouter} from 'react-router-dom'
 import { storiesOf } from '@kadira/storybook'
 import {Container, Row, Col} from 'reactstrap'
 
-const categories = [
-  {
-    name: 'Test Category',
-    slug: 'test-category'
-  },
-  {
-    name: 'Test Category 2',
-    slug: 'test-category-2'
-  },
-]
+const data = {
+  loading: false,
+  getCategories: [
+    {
+      name: 'Test Category',
+      slug: 'test-category'
+    },
+    {
+      name: 'Test Category 2',
+      slug: 'test-category-2'
+    },
+  ]
+}
 
 
 const CategoriesListStories = storiesOf('CategoriesList', module)
@@ -22,7 +25,7 @@ const CategoriesListStories = storiesOf('CategoriesList', module)
       <Container>
         <Row>
           <Col sm="3">
-            <CategoriesList categories={categories}/>
+            <CategoriesList data={data}/>
           </Col>
         </Row>
       </Container>

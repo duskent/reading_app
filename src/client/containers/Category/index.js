@@ -5,18 +5,28 @@ import query from './query'
 // Props
 import PropTypes from './prop-types'
 // Components
-import BooksList from '../../components/BooksList'
-import {Container} from 'reactstrap'
+import BookCard from '../../components/BookCard'
+import {Container, Row, Col} from 'reactstrap'
 
 const Category = ({data}) => {
   if (data.loading) {
     return <h1>Loading</h1>
   }
 
+  const {getCategory: {name, books}} = data
+
   return (
     <Container className="page-container">
-      <h1 className="text-center display-4">{data.getCategory.name} of the category Page</h1>
-      <BooksList books={data.getCategory.books} />
+      <h1 className="text-center display-4">{name} of the category Page</h1>
+      <Container className="books-list">
+        <Row>
+          {books.map(book => (
+            <Col sm="3">
+              <BookCard book={book} />
+            </Col>
+          ))}
+        </Row>
+      </Container>
     </Container>
   )
 }
@@ -24,7 +34,7 @@ const Category = ({data}) => {
 Category.propTypes = PropTypes
 
 export default graphql(query, {
-  options: () => ({
-    variables: {id: "594bce62c6b63422e5f08b8b"},
+  options: ({match: {params: slug}}) => ({
+    variables: {slug: slug.slug},
   })
 })(Category)

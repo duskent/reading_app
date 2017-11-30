@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route, Redirect, Switch} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 // Components (Pages)
 import Home from '../pages/Home'
 import Books from '../pages/Books'
@@ -22,7 +22,6 @@ const Routes = () =>
       <Route path="/categories/new" component={NewCategory} />
       <Route path="/categories/:slug" component={Category} />
     </Switch>
-    <Redirect to="/" />
   </div>
 
 export default Routes

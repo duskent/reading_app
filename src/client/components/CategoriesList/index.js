@@ -9,12 +9,10 @@ const CategoriesList = ({data}) => {
     return <h1>Loading</h1>
   }
 
-  console.log(data) //eslint-disable-line
-
   return (
     <ListGroup className="categories-list">
-      {data.getCategories.map(category => (
-        <ListGroupItem>
+      {data.getCategories.map((category, index) => (
+        <ListGroupItem key={index}>
           <Link to={`/categories/${category.slug}`}>{category.name}</Link>
         </ListGroupItem>
       ))}
