@@ -1,6 +1,7 @@
 import CategoriesList from '../components/CategoriesList'
 // GraphQL
-import { gql, graphql } from 'react-apollo'
+import { graphql } from 'react-apollo'
+import gql from 'graphql-tag'
 
 export default graphql(gql`
   {
